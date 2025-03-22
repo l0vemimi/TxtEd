@@ -4,7 +4,7 @@ Simple text editor.
 ![txt-qt](ass/txt-qt.png)
 
 <details>
-    <summary><b>Basic Functions:</b></summary>
+    <summary><b>Keyboard Shortcuts:</b></summary>
 
 Save = CTRL + s
 
