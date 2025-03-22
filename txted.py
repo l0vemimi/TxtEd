@@ -1,28 +1,27 @@
-#!/usr/bin/env python3
 import tkinter as tk
 from tkinter import filedialog, Text
 
 class TextEditor:
     def __init__(self, root):
         self.root = root
-        self.root.title("Styled Text Editor")
+        self.root.title("Simple Text Editor")
 
         # Set window size and background color
         self.root.geometry("800x600")
-        self.root.configure(bg="#f0f0f0")
+        self.root.configure(bg="white")
 
         # Customize text area
-        self.text_area = Text(self.root, wrap='word', undo=True, font=("Helvetica", 14), bg="#ffffff", fg="#000000", insertbackground="black")
+        self.text_area = Text(self.root, wrap='word', undo=True, font=("Helvetica", 14), bg="#FFFFFF", fg="#000000", insertbackground="black")
         self.text_area.pack(expand='yes', fill='both', padx=10, pady=10)
 
         # Word count label
-        self.word_count_label = tk.Label(self.root, text="Word count: 0", bg="#f0f0f0", font=("Helvetica", 12))
+        self.word_count_label = tk.Label(self.root, text="Word count: 0", bg="white", font=("Helvetica", 12))
         self.word_count_label.pack(side='bottom', pady=5)
 
         # Customize menu bar
-        self.menu_bar = tk.Menu(self.root, bg="#FFFFFFFF", fg="#000000FF")
+        self.menu_bar = tk.Menu(self.root, bg="white", fg="#000000")
 
-        self.file_menu = tk.Menu(self.menu_bar, tearoff=0, bg="#FFFFFFFF", fg="#000000")
+        self.file_menu = tk.Menu(self.menu_bar, tearoff=0, bg="white", fg="#000000")
         self.file_menu.add_command(label="New", command=self.new_file)
         self.file_menu.add_command(label="Open", command=self.open_file)
         self.file_menu.add_command(label="Save", command=self.save_file)
