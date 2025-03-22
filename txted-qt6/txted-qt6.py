@@ -1,11 +1,10 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog, QPlainTextEdit, QVBoxLayout, QWidget, QMenuBar, QHBoxLayout, QLabel, QStatusBar
-from PyQt6.QtGui import QIcon, QTextCharFormat, QColor, QTextCursor, QAction, QFont, QPainter, QTextFormat, QKeySequence
-from PyQt6.QtCore import Qt, QRect, QSize, QEvent
+from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog, QPlainTextEdit, QVBoxLayout, QWidget, QMenuBar, QHBoxLayout, QLabel, QStatusBar, QFontDialog, QColorDialog, QPushButton
+from PyQt6.QtGui import QIcon, QTextCharFormat, QColor, QTextCursor, QFont, QPainter, QTextFormat, QKeySequence, QAction
+from PyQt6.QtCore import Qt
 from pygments import lex
 from pygments.lexers import get_lexer_by_name, guess_lexer_for_filename
 from pygments.styles import get_style_by_name
-
 
 class NumberBar(QWidget):
     def __init__(self, editor):
@@ -14,6 +13,8 @@ class NumberBar(QWidget):
         self.editor.blockCountChanged.connect(self.update_width)
         self.editor.updateRequest.connect(self.update_on_scroll)
         self.update_width('1')
+        self.color = Qt.GlobalColor.black
+        self.bg_color = Qt.GlobalColor.white
 
     def update_width(self, _):
         width = self.fontMetrics().horizontalAdvance(str(self.editor.blockCount())) + 10
@@ -31,7 +32,7 @@ class NumberBar(QWidget):
     def paintEvent(self, event):
         self.editor.blockCount()
         painter = QPainter(self)
-        painter.fillRect(event.rect(), Qt.GlobalColor.white)
+        painter.fillRect(event.rect(), self.bg_color)
 
         block = self.editor.firstVisibleBlock()
         blockNumber = block.blockNumber()
@@ -41,7 +42,7 @@ class NumberBar(QWidget):
         while block.isValid() and top <= event.rect().bottom():
             if block.isVisible() and bottom >= event.rect().top():
                 number = str(blockNumber + 1)
-                painter.setPen(Qt.GlobalColor.black)
+                painter.setPen(self.color)
                 painter.drawText(0, top, self.width(), self.fontMetrics().height(), Qt.AlignmentFlag.AlignRight, number)
             block = block.next()
             top = bottom
@@ -80,7 +81,6 @@ class TextEditor(QMainWindow):
         self.text_area.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)
         self.text_area.setFont(QFont("Courier", 10))
 
-        # Word count at bottom corner
         self.status_bar = QStatusBar(self)
         self.setStatusBar(self.status_bar)
         self.word_count_label = QLabel(self)
@@ -88,8 +88,10 @@ class TextEditor(QMainWindow):
         self.status_bar.addPermanentWidget(self.word_count_label)
         self.update_word_count()
 
-        # Shortcuts
         self.createShortcuts()
+
+        self.current_theme = "light"
+        self.apply_theme()
 
     def createMenuBar(self):
         menu_bar = self.menuBar()
@@ -112,6 +114,26 @@ class TextEditor(QMainWindow):
         exit_action = QAction('Exit', self)
         exit_action.triggered.connect(self.close)
         file_menu.addAction(exit_action)
+
+        settings_menu = menu_bar.addMenu('Settings')
+
+        change_font_action = QAction('Change Font', self)
+        change_font_action.triggered.connect(self.change_font)
+        settings_menu.addAction(change_font_action)
+
+        theme_menu = settings_menu.addMenu('Theme')
+
+        light_theme_action = QAction('Light', self)
+        light_theme_action.triggered.connect(self.set_light_theme)
+        theme_menu.addAction(light_theme_action)
+
+        dark_theme_action = QAction('Dark', self)
+        dark_theme_action.triggered.connect(self.set_dark_theme)
+        theme_menu.addAction(dark_theme_action)
+
+        custom_theme_action = QAction('Custom', self)
+        custom_theme_action.triggered.connect(self.set_custom_theme)
+        theme_menu.addAction(custom_theme_action)
 
     def createShortcuts(self):
         copy_action = QAction(self)
@@ -220,6 +242,67 @@ class TextEditor(QMainWindow):
             self.update_word_count()
         return super().eventFilter(obj, event)
 
+    def change_font(self):
+        font, ok = QFontDialog.getFont(self.text_area.font(), self, "Select Font")
+        if ok:
+            self.text_area.setFont(font)
+
+    def set_light_theme(self):
+        self.current_theme = "light"
+        self.apply_theme()
+
+    def set_dark_theme(self):
+        self.current_theme = "dark"
+        self.apply_theme()
+
+    def set_custom_theme(self):
+        bg_color = QColorDialog.getColor(Qt.GlobalColor.white, self, "Select Background Color")
+        fg_color = QColorDialog.getColor(Qt.GlobalColor.black, self, "Select Foreground Color")
+        if bg_color.isValid() and fg_color.isValid():
+            self.custom_theme = {
+                "background": bg_color.name(),
+                "foreground": fg_color.name()
+            }
+            self.apply_theme()
+
+    def apply_theme(self):
+        if self.current_theme == "light":
+            bg_color = "#ffffff"
+            fg_color = "#000000"
+            menu_color = "#f0f0f0"
+            settings_color = "#000000"
+        elif self.current_theme == "dark":
+            bg_color = "#2b2b2b"
+            fg_color = "#ffffff"
+            menu_color = "#3c3c3c"
+            settings_color = "#ffffff"
+        else:
+            bg_color = self.custom_theme["background"]
+            fg_color = self.custom_theme["foreground"]
+            menu_color = "transparent"
+            settings_color = self.custom_theme["foreground"]
+
+        self.setStyleSheet(f"""
+            QMainWindow {{
+                background-color: {bg_color};
+                color: {fg_color};
+            }}
+            QPlainTextEdit {{
+                background-color: {bg_color};
+                color: {fg_color};
+            }}
+            QStatusBar, QLabel {{
+                background-color: {bg_color};
+                color: {fg_color};
+            }}
+            QMenuBar, QMenu, QAction {{
+                background: transparent;
+                color: {settings_color};
+            }}
+        """)
+        self.number_bar.color = QColor(fg_color)
+        self.number_bar.bg_color = QColor(bg_color)
+        self.number_bar.update()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

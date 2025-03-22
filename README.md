@@ -2,6 +2,7 @@
 Simple text editor.
 
 ![txt-qt](ass/txt-qt.png)
+![txt-qt](ass/txt-qt-dark.png)
 
 <details>
     <summary><b>Keyboard Shortcuts:</b></summary>

@@ -6,7 +6,7 @@ pkgdesc="Very simple python text editor with qt6 & wayland compatability."
 arch=('any')
 url="https://github.com/l0vemimi/txted"
 license=('GPL')
-depends=('python' 'pyqt6' 'pygments')
+depends=('python' 'pyqt6' 'pygments' 'python-pyqt6-webengine')
 makedepends=('git')
 source=("git+https://github.com/l0vemimi/txted.git#tag=v$pkgver"
         "txted-qt6.desktop"
