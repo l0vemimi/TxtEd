@@ -1,5 +1,5 @@
-# TxtEd
-![txt-qt](txted-qt6/txt-qt.png) Simple text editor.
+# ![txt-qt](txted-qt6/txt-qt.png) TxtEd
+Simple text editor.
 
 ![txt-qt](ass/txt-qt.png)
 
