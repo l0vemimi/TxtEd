@@ -134,6 +134,28 @@ class TextEditor(QMainWindow):
         select_all_action.triggered.connect(self.text_area.selectAll)
         self.addAction(select_all_action)
 
+        zoom_in_action = QAction(self)
+        zoom_in_action.setShortcut(QKeySequence("Ctrl+="))
+        zoom_in_action.triggered.connect(self.zoom_in)
+        self.addAction(zoom_in_action)
+
+        zoom_out_action = QAction(self)
+        zoom_out_action.setShortcut(QKeySequence("Ctrl+-"))
+        zoom_out_action.triggered.connect(self.zoom_out)
+        self.addAction(zoom_out_action)
+
+    def zoom_in(self):
+        font = self.text_area.font()
+        size = font.pointSize()
+        font.setPointSize(size + 1)
+        self.text_area.setFont(font)
+
+    def zoom_out(self):
+        font = self.text_area.font()
+        size = font.pointSize()
+        font.setPointSize(max(size - 1, 1))
+        self.text_area.setFont(font)
+
     def new_file(self):
         self.text_area.clear()
         self.update_word_count()
