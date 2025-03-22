@@ -2,8 +2,8 @@
 Version=1.0
 Name=TxtEd
 Comment=Simple text editor
-Exec=python3 ~/txted.py
-Icon=txt.png
+Exec=python3 /home/txted/txted.py
+Icon=/home/txted/txt.png
 Terminal=false
 Type=Application
 Categories=Utility;TextEditor;
