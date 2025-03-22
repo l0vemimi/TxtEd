@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.0
-Name=TxtEd
+Name=TxtEd-QT
 Comment=Simple text editor
-Exec=python3 /home/txted/txted.py
-Icon=/home/txted/txt.png
+Exec=python3 /home/txted/txted-qt.py
+Icon=/home/txted/txt-qt.png
 Terminal=false
 Type=Application
 Categories=Utility;TextEditor;
