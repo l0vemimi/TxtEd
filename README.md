@@ -3,7 +3,8 @@ Simple text editor.
 
 ![txt-qt](ass/txt-qt.png)
 
-**Basic Functions:**
+<details>
+    <summary><b>Basic Functions:</b></summary>
 
 Save = CTRL + s
 
@@ -16,3 +17,5 @@ Paste = CTRL + v
 Zoom In = CTRL + +
 
 Zoom Out = CTRL + -
+
+</details>
