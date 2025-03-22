@@ -1,8 +1,9 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
 Name=TxtEd-QT
 Comment=Simple text editor
-Exec=python3 /home/txted/txted-qt.py
+Exec=python3 /home/txted/txted-qt6.py
 Icon=/home/txted/txt-qt.png
 Terminal=false
 Type=Application
