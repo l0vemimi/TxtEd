@@ -35,7 +35,7 @@ Make sure to edit the .desktop file to your own specifications e.g. dir of txted
 
 You can create a bash alias for automation if CLI is preffered e.g.
 
-        alias txted='python /dir/to/file/txted-qt6.py
+        alias txted='python /dir/to/file/txted-qt6.py'
 
 Then to run it:
 
