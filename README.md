@@ -17,11 +17,11 @@ Simple text editor.
 
 1. Clone repository.
 
-    git clone https://github.com/l0vemimi/TxtEd.git
+        git clone https://github.com/l0vemimi/TxtEd.git
 
 2. Move the the .desktop folder to ~/.local/share/applications.
 
-    mv txted-qt6.desktop ~/.local/share/applications
+        mv txted-qt6.desktop ~/.local/share/applications
 
 Make sure to edit the .desktop file to your own specifications e.g. dir of txted-qt6.py and txt-qt.png for the application img.
 
@@ -31,15 +31,15 @@ Make sure to edit the .desktop file to your own specifications e.g. dir of txted
 
 1. Run the .py file.
 
-    python txted-qt6.py
+        python txted-qt6.py
 
 You can create a bash alias for automation if CLI is preffered e.g.
 
-    alias txted='python /dir/to/file/txted-qt6.py
+        alias txted='python /dir/to/file/txted-qt6.py
 
 Then to run it:
 
-    txted
+        txted
 
 <details>
     <summary><b>Keyboard Shortcuts:</b></summary>
