@@ -1,10 +1,9 @@
-# ![txt-qt](txted-qt6/txt-qt.png) TxtEd
-Simple text editor.
+### Simple text editor.
 
 ![txt-qt](ass/txt-qt.png)
 ![txt-qt](ass/txt-qt-dark.png)
 
-**Dependancies:**
+**Pkg Dependancies:**
 
 - [python](https://archlinux.org/packages/core/x86_64/python/)
 - [python-pyqt6](https://archlinux.org/packages/extra/x86_64/python-pyqt6/)
