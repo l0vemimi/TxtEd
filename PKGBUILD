@@ -1,15 +1,15 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=TxtEd
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="A simple text editor using Python and PyQt6"
 arch=('any')
 url="https://github.com/l0vemimi/TxtEd"
 license=('GPL')
 depends=('python' 'python-pyqt6' 'python-pyqt6-webengine' 'python-pygments')
-#source=("$pkgname-$pkgver.tar.gz::https://github.com/l0vemimi/ArchPkg/raw/main/repo/x86_64/TxtEd-$pkgver.pkg.tar.zst")
-source=("$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/l0vemimi/ArchPkg/raw/main/repo/x86_64/TxtEd-$pkgver.pkg.tar.zst")
+#source=("$pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
 
 package() {
