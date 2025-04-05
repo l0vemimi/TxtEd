@@ -1,9 +1,9 @@
 ### Simple text editor.
 
-![txt-qt](ass/txt-qt.png)
-![txt-qt](ass/txt-qt-dark.png)
+![txt-qt](img/regular-txt-qt.png)
+![txt-qt](img/dark-txt-qt-dark.png)
 
-**Pkg Dependancies:**
+**Package Dependancies:**
 
 - [python](https://archlinux.org/packages/core/x86_64/python/)
 - [python-pyqt6](https://archlinux.org/packages/extra/x86_64/python-pyqt6/)
@@ -14,31 +14,53 @@
 
 **How to use:**
 
-1. Clone repository.
+**I. From Source:**
+
+1. Clone repository:
 
         git clone https://github.com/l0vemimi/TxtEd.git
 
-2. Move the the .desktop folder to ~/.local/share/applications.
+2. Build the package:
 
-        mv txted-qt6.desktop ~/.local/share/applications
+        makepkg -si
 
-Make sure to edit the .desktop file to your own specifications e.g. dir of txted-qt6.py and txt-qt.png for the application img.
+4. Run the app.
 
-3. Run the app.
-
-**To run it just with py:**
+**II. Py:**
 
 1. Run the .py file.
 
         python txted-qt6.py
 
-You can create a bash alias for automation if CLI is preffered e.g.
+1.2. You can create a bash alias for automation if CLI is preffered e.g.
 
         alias txted='python /dir/to/file/txted-qt6.py'
 
-Then to run it:
+1.2.1. Then to run it:
 
         txted
+
+**III. Pacman:**
+
+1. Download the .tar.gz at [l0vemimi/ArchPkg](https://github.com/l0vemimi/ArchPkg/blob/main/repo/x86_64/TxtEd-1.2-1-any.pkg.tar.zst) 
+
+Or.. 
+
+1.2. Clone the whole repo..
+
+        git clone https://github.com/l0vemimi/ArchPkg.git
+
+1.2.1. Find the package file *repo/x86_64/TxtEd-1.2-1-any.pkg.tar.zst*.
+
+2. Add the package tar to your repo db:
+
+        repo-add repo/x86_64/[YOUR_REPO].db.tar.gz repo/x86_64/TxtEd-1.2-1-any.pkg.tar.zst
+
+3. Update pacman:
+
+        sudo pacman -Sy
+
+*NOTE: If you do not have your own repository, see my other repo [l0vemimi/ArchBtw](https://github.com/l0vemimi/ArchBtw) and the [makepkg](https://l0vemimi.github.io/ArchBtw/makepkg/) section in the gitbook.*
 
 <details>
     <summary><b>Keyboard Shortcuts:</b></summary>
