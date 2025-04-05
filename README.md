@@ -1,7 +1,7 @@
 ### Simple text editor.
 
 ![txt-qt](img/regular-txt-qt.png)
-![txt-qt](img/dark-txt-qt-dark.png)
+![txt-qt](img/dark-txt-qt.png)
 
 **Package Dependancies:**
 
