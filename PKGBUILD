@@ -15,6 +15,6 @@ md5sums=('SKIP')
 package() {
   cd "$srcdir/TxtEd"
   install -Dm755 txted-qt6.py "$pkgdir/usr/bin/txted"
-  install -Dm644 txted-qt6.desktop "$pkgdir/usr/share/applications/txted.desktop"
-  install -Dm644 img/txted.png "$pkgdir/usr/share/pixmaps/txt-qt.png"
+  install -Dm644 txted-qt6.desktop "$pkgdir/usr/share/applications/txted-qt6.desktop"
+  install -Dm644 img/txted.png "$pkgdir/usr/share/pixmaps/txted.png"
 }
