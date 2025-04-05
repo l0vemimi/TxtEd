@@ -10,7 +10,7 @@
 - [python-pyqt6-webengine](https://archlinux.org/packages/extra/x86_64/python-pyqt6-webengine/)
 - [python-pygments](https://archlinux.org/packages/extra/any/python-pygments/)
 
-***NOTE: The above are archlinux packages, review your distro's specific for the appropriate deps.***
+*NOTE: The above are archlinux packages, review your distro's specific for the appropriate deps.*
 
 **How to use:**
 
